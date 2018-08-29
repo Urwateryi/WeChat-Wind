@@ -3,17 +3,19 @@
   /* display: inline-block; */
   /* 但是display是网页设计中常用的属性，在小程序中并不常用，在小程序中可以使用flex来达到效果 */
   width: 100px;
-  height: 100px;
+  /* 当子控件没有设置高度的时候，父控件设置了stretch后，会有个拉伸的效果，如果子控件明确设置了高度，则strecth会没有效果 */
+  /* height: 100px; */
 }
 
 .container{
   /* 将一个容器设置为弹性盒子 */
   /* 当块状属性位于弹性盒子下面的时候，就会失效 */
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row-reverse;
   /* 左和上为start，右和下为end，如果reverse的会反过来
   justify-content: flex-end; */
-  justify-content: space-around;
+  justify-content: center;
+  align-items: stretch;
   height: 400px;
   background-color: green
 }
