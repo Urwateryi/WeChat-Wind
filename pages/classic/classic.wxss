@@ -1,4 +1,7 @@
 .chunk{
+  /* 小程序中的view类似于js中的div，那是块状结构，默认会占一行，多个view的话，可能会纵向排列，如果不想每个占一行的话，可以设置为行内元素，display:inline，但inline内是不能设置高和宽的，所以可以设置为display:inline-block，然后再设置高和宽 */
+  /* display: inline-block; */
+  /* 但是display是网页设计中常用的属性，在小程序中并不常用，在小程序中可以使用flex来达到效果 */
   width: 100px;
   height: 100px;
 }
