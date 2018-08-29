@@ -1,35 +1,27 @@
-.chunk{
-  /* 小程序中的view类似于js中的div，那是块状结构，默认会占一行，多个view的话，可能会纵向排列，如果不想每个占一行的话，可以设置为行内元素，display:inline，但inline内是不能设置高和宽的，所以可以设置为display:inline-block，然后再设置高和宽 */
-  /* display: inline-block; */
-  /* 但是display是网页设计中常用的属性，在小程序中并不常用，在小程序中可以使用flex来达到效果 */
-  width: 100px;
-  /* 当子控件没有设置高度的时候，父控件设置了stretch后，会有个拉伸的效果，如果子控件明确设置了高度，则strecth会没有效果 */
+.chunk {
+  width: 150px;
   height: 100px;
 }
 
-.container{
-  /* 将一个容器设置为弹性盒子 */
-  /* 当块状属性位于弹性盒子下面的时候，就会失效 */
+.container {
   display: flex;
   flex-direction: row-reverse;
-  /* 左和上为start，右和下为end，如果reverse的会反过来
-  justify-content: flex-end; */
+  /* 如果没有设置换行的话，每个元素加起来的宽度如果超过了屏幕的宽度，则会自动压缩每个控件，平均每个都会缩小一点，如果想换行的话，可以使用flex-wrap:wrap，如果想要消除换行后的间距（默认会在换行后，剩余的空间中，将换行过去的内容居中排列），则需要算高度，给个固定的高度 */
+  flex-wrap: wrap;
   justify-content: center;
-  /* baseline会参考第一个子元素中的文字进行对齐 */
-  align-items: baseline;
-  height: 400px;
-  background-color: green
+  align-items: flex-start;
+  height: 200px;
+  background-color: green;
 }
 
-.color1{
-   background-color: brown;
-   font-size: 30px;
+.color1 {
+  background-color: brown;
 }
-.color2{
-   background-color: aqua;
-    font-size: 20px;
+
+.color2 {
+  background-color: aqua;
 }
-.color3{
-   background-color: blue;
-    font-size: 10px;
+
+.color3 {
+  background-color: blue;
 }
