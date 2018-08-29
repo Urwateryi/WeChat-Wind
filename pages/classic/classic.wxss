@@ -4,7 +4,7 @@
   /* 但是display是网页设计中常用的属性，在小程序中并不常用，在小程序中可以使用flex来达到效果 */
   width: 100px;
   /* 当子控件没有设置高度的时候，父控件设置了stretch后，会有个拉伸的效果，如果子控件明确设置了高度，则strecth会没有效果 */
-  /* height: 100px; */
+  height: 100px;
 }
 
 .container{
@@ -15,17 +15,20 @@
   /* 左和上为start，右和下为end，如果reverse的会反过来
   justify-content: flex-end; */
   justify-content: center;
-  align-items: stretch;
+  align-items: baseline;
   height: 400px;
   background-color: green
 }
 
 .color1{
-   background-color: brown
+   background-color: brown;
+   font-size: 30px;
 }
 .color2{
-   background-color: aqua
+   background-color: aqua;
+    font-size: 20px;
 }
 .color3{
-   background-color: blue
+   background-color: blue;
+    font-size: 10px;
 }
