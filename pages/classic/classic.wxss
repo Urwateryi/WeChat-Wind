@@ -6,6 +6,17 @@
   height: 100px;
 }
 
+.container{
+  /* 将一个容器设置为弹性盒子 */
+  /* 当块状属性位于弹性盒子下面的时候，就会失效 */
+  display: flex;
+  flex-direction: column-reverse;
+  /* 左和上为start，右和下为end，如果reverse的会反过来 */
+  justify-content: flex-end;
+  height: 400px;
+  background-color: green
+}
+
 .color1{
    background-color: brown
 }
