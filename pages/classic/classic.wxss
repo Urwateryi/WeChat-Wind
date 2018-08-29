@@ -15,6 +15,7 @@
   /* 左和上为start，右和下为end，如果reverse的会反过来
   justify-content: flex-end; */
   justify-content: center;
+  /* baseline会参考第一个子元素中的文字进行对齐 */
   align-items: baseline;
   height: 400px;
   background-color: green
