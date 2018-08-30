@@ -1,1 +1,14 @@
-/* components/like/index.wxss */
+.container{
+
+}
+
+/* 这里使用了子元素选择器的写法，但这种写法有个缺陷，就是不能复用，如果想把一个样式用在多个组件上的时候，可以给每个样式起个名字，小程序目前还支持子弹选择器等多种选择器，并不局限于文档中的几个 */
+.container image{
+  width: 32rpx;
+  height: 28rpx;
+}
+
+.container text{
+  font-size: 24rpx;
+  color: #bbbbbb;
+}
