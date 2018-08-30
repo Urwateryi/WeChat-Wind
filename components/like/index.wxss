@@ -1,5 +1,7 @@
 .container{
-
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx;
 }
 
 /* 这里使用了子元素选择器的写法，但这种写法有个缺陷，就是不能复用，如果想把一个样式用在多个组件上的时候，可以给每个样式起个名字，小程序目前还支持子弹选择器等多种选择器，并不局限于文档中的几个 */
@@ -9,5 +11,11 @@
 }
 
 .container text{
+  font-size: 24rpx;
+  /* 将行高和字体设置得一样大，可以消除文字的间距 */
+  line-height: 24rpx;
   color: #bbbbbb;
+  position: relative;
+  bottom: 10rpx;
+  left: 5rpx;
 }
