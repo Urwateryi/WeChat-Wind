@@ -23,7 +23,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onLike: function(event) {
+    onLike(event) {
       //如果要取properties或者data中的数据，使用this关键字
       let like = this.properties.like;
       let count = this.properties.count;
@@ -33,6 +33,11 @@ Component({
         count : count,
         like: !like
       });
+
+      let behavior=this.properties.like?'like':'cancel'
+      this.triggerEvent('like',{
+        like:behavior
+      })
     }
   }
 })
