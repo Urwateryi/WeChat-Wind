@@ -10,6 +10,9 @@ Page({
   onLoad: function (options) {
     classic.getLastest((res)=>{
         console.log(res)
+        this.setData({
+          classicData:res
+        })
     })
   },
 })
