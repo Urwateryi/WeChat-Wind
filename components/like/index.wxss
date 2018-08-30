@@ -9,6 +9,8 @@
 }
 
 .container text{
-  font-size: 24rpx;
+  /* 苹方细体，只在ios系统中有效，在android中无效，如果电脑是苹果电脑的话，如果是用的安卓模拟器，则也是有效果的，主要是因为苹果电脑默认字体就是苹方 ，而在安卓中的默认字体是思源*/
+  font-family: "PingFangSC-Thin";
+  font-size: 48rpx;
   color: #bbbbbb;
 }
