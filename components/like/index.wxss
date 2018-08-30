@@ -1,5 +1,6 @@
 .container{
-  display: flex;
+  /* 将display设置为inline-flex后，可以消除自己和子元素的块状属性，相当于将宽度设置为自适应 */
+  display: inline-flex;
   flex-direction: row;
   padding: 10rpx;
 }
