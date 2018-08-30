@@ -1,6 +1,6 @@
-import{HTTP} from '../../util/http.js'
+import { ClassicModel} from '../../models/classic.js'
 
-let http=new HTTP();
+let classic = new ClassicModel();
 
 Page({
 
@@ -8,11 +8,8 @@ Page({
 
   },
   onLoad: function (options) {
-    http.request({
-      url:'classic/latest',
-      success:(res)=>{
+    classic.getLastest((res)=>{
         console.log(res)
-      }
     })
   },
 })
