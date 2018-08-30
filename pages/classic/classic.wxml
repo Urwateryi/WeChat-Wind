@@ -1,1 +1,2 @@
 <z-like like="{{classicData.like_status}}" count="{{classicData.fav_nums}}" />
+<z-movie img="{{classicData.image}}" content="{{classicData.content}}" />
