@@ -4,14 +4,7 @@ Component({
    */
   properties: {
     like: {
-      // 目前小程序只可以设置以下三个值，其中type为必填，value和observer为选填
       type: Boolean,
-      // // 初始值，如果初始值为false的话，没有必要写，因为boolean的默认值本来就是false，所以当初始值要为true时，才有必要写
-      // value: false,
-      // // 监听方法
-      // observer: function() {
-
-      // }
     },
     count: {
       type: Number,
@@ -31,7 +24,15 @@ Component({
    */
   methods: {
     onLike: function(event) {
+      //如果要取properties或者data中的数据，使用this关键字
+      let like = this.properties.like;
+      let count = this.properties.count;
 
+      count = like ? count - 1 : count + 1;
+      this.setData({
+        count : count,
+        like: !like
+      });
     }
   }
 })
