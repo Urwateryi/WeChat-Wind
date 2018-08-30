@@ -1,3 +1,6 @@
+/* - 不是所有的全局样式都能够被组件继承，只有很少的部分能够被继承，在自定义组件中，只有font，color会从组建外继承到组件内
+- 但是几乎所有的样式都能够被page页面继承 */
 page{
    font-family: "PingFangSC-Thin";
+   font-size: 32rpx;
 }
