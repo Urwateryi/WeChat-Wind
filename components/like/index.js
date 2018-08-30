@@ -22,9 +22,6 @@ Component({
    * 组件内部的数据定义在此，即内部的私有属性
    */
   data: {
-    // 数据绑定
-    like:false,
-    count:99,
     likeSrc:"images/like.png",
     unLikeSrc:'images/like@dis.png'
   },
