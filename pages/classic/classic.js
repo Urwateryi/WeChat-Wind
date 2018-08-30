@@ -1,8 +1,12 @@
 import {
   ClassicModel
 } from '../../models/classic.js'
+import {
+  LikeModel
+} from '../../models/like.js'
 
-let classic = new ClassicModel();
+let classicModel = new ClassicModel();
+let likeModel = new LikeModel();
 
 Page({
 
@@ -10,7 +14,7 @@ Page({
     classicData: null
   },
   onLoad(options) {
-    classic.getLastest((res) => {
+    classicModel.getLastest((res) => {
       console.log(res)
       this.setData({
         // classicData是要传递到wxml中去，被wxml使用的变量，最好在data中初始化一下
@@ -20,6 +24,7 @@ Page({
   },
 
   onLike(event) {
-
+    let behavior = event.detail.behavior
+    likeModel.like(behavior,this.data.classicData.id,this.data.classicData.type);
   }
 })

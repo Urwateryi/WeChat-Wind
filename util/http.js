@@ -25,7 +25,8 @@ class HTTP {
       success:(res)=>{
         let code=res.statusCode.toString()
         if(code.startsWith('2')){
-            params.success(res.data)
+          //这种写法类似于判断params.success是否为空然后进行下一步的意思
+           params.success && params.success(res.data)
         }else{//异常，
           this._show_error(res.data.error_code)
         }

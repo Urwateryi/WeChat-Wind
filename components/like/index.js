@@ -36,7 +36,7 @@ Component({
 
       let behavior=this.properties.like?'like':'cancel'
       this.triggerEvent('like',{
-        like:behavior
+        behavior:behavior
       })
     }
   }
