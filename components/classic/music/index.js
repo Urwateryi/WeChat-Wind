@@ -1,7 +1,7 @@
-import { classicBehavior} from '../classic-behavior.js'
+import { classicBehavior } from '../classic-behavior.js'
 Component({
 
-  behaviors:[
+  behaviors: [
     classicBehavior
   ],
   /**
@@ -14,7 +14,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    pauseSrc:'images/player@waiting.png',
+    playSrc:'images/player@playing.png',
   },
 
   /**

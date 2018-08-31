@@ -12,8 +12,8 @@ Page({
 
   data: {
     classicData: null,
-    latest:true,
-    first:false
+    latest: true,
+    first: false
   },
   onLoad(options) {
     classicModel.getLastest((res) => {
@@ -27,6 +27,16 @@ Page({
 
   onLike(event) {
     let behavior = event.detail.behavior
-    likeModel.like(behavior,this.data.classicData.id,this.data.classicData.type);
-  }
+    likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type);
+  },
+
+  //上一条
+  onPrevious(event) {
+    
+  },
+
+  //下一条
+  onNext(event) {
+
+  },
 })

@@ -1,7 +1,7 @@
-import { classicBehavior} from '../classic-behavior.js'
+import { classicBehavior } from '../classic-behavior.js'
 Component({
 
-  behaviors:[
+  behaviors: [
     classicBehavior
   ],
   /**
