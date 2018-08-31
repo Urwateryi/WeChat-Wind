@@ -1,5 +1,8 @@
-<view class='header'>
-  <z-epsoide class="epsoide" index="{{classicData.index}}" />
-  <z-like class="like" bind:like="onLike" like="{{classicData.like_status}}" count="{{classicData.fav_nums}}" />
+<view class ="container">
+  <view class='header'>
+    <z-epsoide class="epsoide" index="{{classicData.index}}" />
+    <z-like class="like" bind:like="onLike" like="{{classicData.like_status}}" count="{{classicData.fav_nums}}" />
+  </view>
+  <z-movie img="{{classicData.image}}" content="{{classicData.content}}" />
+  <z-navi title="{{classicData.title}}" first="{{first}}" latest="{{latest}}" class="navi" />
 </view>
-<z-movie img="{{classicData.image}}" content="{{classicData.content}}" />

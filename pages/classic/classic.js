@@ -11,7 +11,9 @@ let likeModel = new LikeModel();
 Page({
 
   data: {
-    classicData: null
+    classicData: null,
+    latest:true,
+    first:false
   },
   onLoad(options) {
     classicModel.getLastest((res) => {
