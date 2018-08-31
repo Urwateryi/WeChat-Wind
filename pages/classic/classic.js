@@ -25,6 +25,7 @@ Page({
     })
   },
 
+  //点赞
   onLike(event) {
     let behavior = event.detail.behavior
     likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type);
@@ -32,11 +33,22 @@ Page({
 
   //上一条
   onPrevious(event) {
-    
+    this._updataClassic('previous')
   },
 
   //下一条
   onNext(event) {
+    this._updataClassic('next')
+  },
 
+  _updataClassic(nextOrPrevious) {
+    classicModel.getClassic(this.data.classicData.index, nextOrPrevious, (res) => {
+      console.log(res)
+      this.setData({
+        classicData: res,
+        latest: classicModel.isLatest(res.index),
+        first: classicModel.isFirst(res.index)
+      })
+    })
   },
 })
