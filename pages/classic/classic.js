@@ -13,14 +13,19 @@ Page({
   data: {
     classicData: null,
     latest: true,
-    first: false
+    first: false,
+    likeCount:0,
+    likeStatus:false
   },
+
   onLoad(options) {
     classicModel.getLastest((res) => {
       console.log(res)
       this.setData({
         // classicData是要传递到wxml中去，被wxml使用的变量，最好在data中初始化一下
-        classicData: res
+        classicData: res,
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
       })
     })
   },
@@ -42,8 +47,12 @@ Page({
   },
 
   _updataClassic(nextOrPrevious) {
-    classicModel.getClassic(this.data.classicData.index, nextOrPrevious, (res) => {
+    let index=this.data.classicData.index
+
+    classicModel.getClassic(index, nextOrPrevious, (res) => {
       console.log(res)
+
+      this._getLikeStatus(res.id,res.type)
       this.setData({
         classicData: res,
         latest: classicModel.isLatest(res.index),
@@ -51,4 +60,13 @@ Page({
       })
     })
   },
+
+  _getLikeStatus(artID, category) {
+    likeModel.getClassicLikeStatus(artID, category, (res) => {
+        this.setData({
+          likeCount:res.fav_nums,
+          likeStatus:res.like_status
+        })
+    })
+  }
 })
