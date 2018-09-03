@@ -1,6 +1,6 @@
 <view class ="container">
   <view class='header'>
-    <z-epsoide class="epsoide" index="{{classicData.index}}" />
+    <z-episode class="episode" index="{{classicData.index}}" />
     <z-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
   </view>
   <z-movie hidden="{{classicData.type!=100}}" img="{{classicData.image}}" content="{{classicData.content}}" />
