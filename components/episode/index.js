@@ -28,12 +28,13 @@ Component({
   },
 
   attached(){
-    let date=new Date()
-    let y =date.getFullYear()
-    let m=date.getMonth()
+    const date=new Date()
+    const year =date.getFullYear()
+    const m=date.getMonth()
 
     this.setData({
-      year:y,
+      // year:year,可以使用eslint直接改写成以下写法
+      year,
       month: this.data.months[m]
     })
   },

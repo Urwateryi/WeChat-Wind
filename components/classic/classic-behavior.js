@@ -1,4 +1,4 @@
-let classicBehavior = Behavior({
+const classicBehavior = Behavior({
   properties: {
     img: String,
     content: String,

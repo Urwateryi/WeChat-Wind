@@ -32,7 +32,7 @@ Page({
 
   //点赞
   onLike(event) {
-    let behavior = event.detail.behavior
+    const behavior = event.detail.behavior
     likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type);
   },
 
@@ -47,7 +47,7 @@ Page({
   },
 
   _updataClassic(nextOrPrevious) {
-    let index=this.data.classicData.index
+    const index=this.data.classicData.index
 
     classicModel.getClassic(index, nextOrPrevious, (res) => {
       console.log(res)
