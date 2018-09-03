@@ -27,7 +27,11 @@ Component({
   },
 
   attached() {
+    //音乐的播放，不只是内部可以控制，外部也可以控制
+    //小程序内部控制音乐播放
     this._recoverStatus()
+    //小程序外部控制音乐播放
+    this._monitorSwitch()
   },
 
   /**
@@ -62,6 +66,29 @@ Component({
           playing: true
         })
       }
+    },
+
+    //监听音乐的后台播放状态
+    _monitorSwitch() {
+      //播放音乐
+      mMgr.onPlay(() => {
+        this._recoverStatus()
+      })
+
+      //暂停音乐
+      mMgr.onPause(() => {
+        this._recoverStatus()
+      })
+
+      //直接关掉音乐播放
+      mMgr.onStop(() => {
+        this._recoverStatus()
+      })
+
+      //音乐自然播放完成
+      mMgr.onEnded(() => {
+        this._recoverStatus()
+      })
     }
   }
 })
