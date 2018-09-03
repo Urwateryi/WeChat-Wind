@@ -10,6 +10,7 @@ const tips={
 }
 
 class HTTP {
+  //这里的params可以任意添加多个参数
   request(params) {
     if(!params.method){
         params.method='GET'
@@ -41,10 +42,11 @@ class HTTP {
     if(!error_code){
       error_code=1
     }
+    const tip = tips[error_code]
     wx.showToast({
-      title: tips[error_code],
-      icon:'none',
-      duration:2000
+      title: tip ? tip : tips[1],
+      icon: 'none',
+      duration: 2000
     })
   }
 }
