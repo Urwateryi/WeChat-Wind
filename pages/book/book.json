@@ -1,1 +1,5 @@
-{}
+{
+      "usingComponents": {
+        "z-book": "/components/book/index"
+      }
+}

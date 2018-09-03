@@ -7,11 +7,15 @@ const bookModel = new BookModel()
 Page({
 
   data: {
-
+    books: []
   },
 
   onLoad(options) {
-    const hotList = bookModel.getHotList()
-    hotList.then(res => console.log(res))
+    bookModel.getHotList()
+      .then(res => {
+        this.setData({
+          books: res
+        })
+      })
   },
 })

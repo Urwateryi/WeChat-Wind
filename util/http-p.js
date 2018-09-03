@@ -11,7 +11,7 @@ const tips = {
 
 class HTTP {
   //后面两个参数给定默认值，如果不传的话，就取默认值
-  request(url, data = {}, method = 'GET') {
+  request({url, data = {}, method = 'GET'}) {
     return new Promise((resolve, reject) => {
         this._request(url,resolve,reject,data,method)
     })
