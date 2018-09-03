@@ -14,11 +14,11 @@ Page({
   onLoad: function(options) {
     const promise = new Promise((resolve, reject) => {
       wx.getSystemInfo({
-        success(res) {
+        success:(res)=>{
           //信息获取成功后，通过resolve将状态修改为resolve
           resolve(res)
         },
-        fail(error) {
+        fail:(error)=> {
           //信息获取失败后，通过resolve将状态修改为reject
           reject(res)
         }
