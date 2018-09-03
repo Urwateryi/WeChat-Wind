@@ -4,7 +4,7 @@
     <z-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
   </view>
   <z-movie hidden="{{classicData.type!=100}}" img="{{classicData.image}}" content="{{classicData.content}}" />
-  <z-music hidden="{{classicData.type!=200}}" img="{{classicData.image}}" content="{{classicData.content}}" />
+  <z-music hidden="{{classicData.type!=200}}" img="{{classicData.image}}" src="{{classicData.url}}" content="{{classicData.content}}" />
   <z-essay hidden="{{classicData.type!=300}}" img="{{classicData.image}}" content="{{classicData.content}}" />
   <z-navi bind:left="onNext" bind:right="onPrevious" title="{{classicData.title}}" first="{{first}}" latest="{{latest}}" class="navi" />
 </view>
