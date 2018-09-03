@@ -28,19 +28,16 @@
   right: 310rpx;
 }
 
-/* .rotation{
-  -webkit-transform: rotate(360deg);
+.rotation{
   animation: rotation 12s linear infinite;
-  -moz-animation: rotation 12s linear infinite;
-  -webkit-animation: rotation 12s linear infinite;
-  -o-animation: rotation 12s linear infinite;
 }
 
 @-webkit-keyframes rotation{
-  from{
-    -webkit-animation: rotate(0deg);
+  from {
+    -webkit-transform: rotate(0deg);
   }
-  to{
-    -webkit-animation: rotate(360deg);
+
+  to {
+    -webkit-transform: rotate(360deg);
   }
-} */
+}
