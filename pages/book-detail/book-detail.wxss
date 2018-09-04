@@ -58,3 +58,9 @@
   /* 在flex模式下，margin-bottom才会生效 */
   margin-bottom: 15rpx;
 }
+
+.num{
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  color: #aaa;
+}

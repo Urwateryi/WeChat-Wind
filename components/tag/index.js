@@ -1,9 +1,15 @@
 Component({
+
+  options: {
+    //启用插槽
+    multipleSlots: true
+  },
+
   /**
    * 组件的属性列表
    */
   properties: {
-    text:String
+    text: String
   },
 
   /**
