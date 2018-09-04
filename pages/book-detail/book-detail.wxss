@@ -1,1 +1,48 @@
-/* pages/book-detail/book-detail.wxss */
+.container{
+  background-color: #f5f5f5;
+  width: 100%;
+}
+
+.head{
+  background-color: white;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title{
+  color:#2f2f2f;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.author{
+  font-size: 28rpx;
+  color: #999;
+}
+
+.head image{
+  width: 200rpx;
+  height: 300rpx;
+  box-shadow: 2px 2px 3px #e3e3e3;
+}
+
+.sub-container{
+  width: 690rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+  background-color: white;
+  padding: 30rpx;
+}
+
+.headline{
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2f2f2f;
+  margin-bottom: 20rpx;
+}
