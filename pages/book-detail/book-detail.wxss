@@ -64,3 +64,28 @@
   font-size: 22rpx;
   color: #aaa;
 }
+
+/* 后代选择器
+.comment-container z-tag:nth-child(1) view{
+  background-color: #fffbdd;
+} */
+
+/* 子元素选择器
+.comment-container > z-tag:nth-child(1) > view{
+  background-color: #fffbdd;
+} */
+
+/* 子元素选择器
+.comment-container > z-tag:nth-child(2) > view{
+  background-color: #eefbff;
+} */
+
+/* 子元素选择器 选择奇数*/
+.comment-container > z-tag:nth-child(odd) > view{
+  background-color: #eefbff;
+}
+
+/* 子元素选择器 选择偶数*/
+.comment-container > z-tag:nth-child(even) > view{
+  background-color: #fffbdd;
+}
