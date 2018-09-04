@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "z-tag": "/components/tag/index"
+  }
+}
