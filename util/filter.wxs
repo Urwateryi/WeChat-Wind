@@ -1,0 +1,13 @@
+// 将\\n替换成\n
+var format = function(text) {
+  if (!text) {
+    return
+  }
+  var reg = getRegExp('\\\\n', 'g')
+  // & nbsp;表示空格
+  return text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+}
+
+module.exports = {
+  format: format
+}

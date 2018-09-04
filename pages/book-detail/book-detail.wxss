@@ -35,7 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   background-color: white;
   padding: 30rpx;
 }
@@ -81,4 +81,9 @@
 
 .ex-tag2 {
   background-color: #eefbff !important;
+}
+
+.content{
+  text-indent: 58rpx;
+  font-weight: 500
 }
