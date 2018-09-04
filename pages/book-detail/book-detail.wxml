@@ -9,7 +9,7 @@
     <text class='headline'>短评</text>
     <view class='comment-container'>
       <block wx:for="{{comments}}" wx:key="index">
-        <z-tag text="{{item.content}}">
+        <z-tag tag-class="{{index==0?'ex-tag1':''||index==1?'ex-tag2':''}}" text="{{item.content}}">
           <text class='num' slot="after">{{' +'+item.nums}}</text>
         </z-tag>
       </block>

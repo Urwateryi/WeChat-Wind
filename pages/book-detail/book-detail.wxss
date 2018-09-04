@@ -1,9 +1,9 @@
-.container{
+.container {
   background-color: #f5f5f5;
   width: 100%;
 }
 
-.head{
+.head {
   background-color: white;
   padding-top: 40rpx;
   padding-bottom: 40rpx;
@@ -12,25 +12,25 @@
   align-items: center;
 }
 
-.title{
-  color:#2f2f2f;
+.title {
+  color: #2f2f2f;
   margin-top: 20rpx;
   font-size: 30rpx;
   font-weight: 600;
 }
 
-.author{
+.author {
   font-size: 28rpx;
   color: #999;
 }
 
-.head image{
+.head image {
   width: 200rpx;
   height: 300rpx;
   box-shadow: 2px 2px 3px #e3e3e3;
 }
 
-.sub-container{
+.sub-container {
   width: 690rpx;
   display: flex;
   flex-direction: column;
@@ -40,37 +40,45 @@
   padding: 30rpx;
 }
 
-.headline{
+.headline {
   font-size: 30rpx;
   font-weight: 600;
   color: #2f2f2f;
   margin-bottom: 20rpx;
 }
 
-.comment-container{
+.comment-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
-.comment-container z-tag{
+.comment-container z-tag {
   margin-right: 15rpx;
   /* 在flex模式下，margin-bottom才会生效 */
   margin-bottom: 15rpx;
 }
 
-.num{
+.num {
   margin-left: 10rpx;
   font-size: 22rpx;
   color: #aaa;
 }
 
 /* 子元素选择器 */
-.comment-container > z-tag:nth-child(1) > view{
+/* .comment-container > z-tag:nth-child(1) > view {
   background-color: #fffbdd;
-}
+} */
 
 /* 子元素选择器 */
-.comment-container > z-tag:nth-child(2) > view{
+/* .comment-container > z-tag:nth-child(2) > view {
   background-color: #eefbff;
+} */
+
+.ex-tag1 {
+  background-color: #fffbdd !important;
+}
+
+.ex-tag2 {
+  background-color: #eefbff !important;
 }
