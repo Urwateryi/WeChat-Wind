@@ -1,4 +1,5 @@
-<wxs src="../../util/filter.wxs" module='util' />
+<!-- 引入wxs -->
+<wxs src="../../util/filter.wxs" module='filter' />
 
 <view class='container'>
   <view class='head'>
@@ -20,6 +21,25 @@
 
   <view class='sub-container'>
     <text class='headline'>内容简介</text>
-    <text class='content' decode='{{true}}'>{{util.format(book.summary)}}</text>
+    <text class='content' decode='{{true}}'>{{filter.format(book.summary)}}</text>
   </view>
 </view>
+
+<!-- wxs也可以直接在wxml中定义
+<wxs module="filter">
+  var limit = function(array, length) {
+    return array.slice(0, length)
+  }
+  var format = function(text){
+    if(!text){
+      return
+    }
+    var reg = getRegExp('\\\\n','g')
+    var text = text.replace(reg,'\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+    return text
+  }
+  module.exports = {
+    limit: limit,
+    format:format
+  }
+</wxs> -->
