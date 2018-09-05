@@ -29,15 +29,16 @@
 }
 
 .rotation{
+  /* linear匀速播放，infinite无限播放 */
   animation: rotation 12s linear infinite;
 }
 
-@-webkit-keyframes rotation{
+@keyframes rotation{
   from {
-    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   to {
-    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
