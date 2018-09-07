@@ -11,7 +11,7 @@
   <view class='sub-container'>
     <text class='headline'>短评</text>
     <view class='comment-container'>
-      <block wx:for="{{comments}}" wx:key="index">
+      <block wx:for="{{filter.limit(comments,15)}}" wx:key="index">
         <z-tag tag-class="{{index==0?'ex-tag1':''||index==1?'ex-tag2':''}}" text="{{item.content}}">
           <text class='num' slot="after">{{' +'+item.nums}}</text>
         </z-tag>
@@ -22,6 +22,26 @@
   <view class='sub-container'>
     <text class='headline'>内容简介</text>
     <text class='content' decode='{{true}}'>{{filter.format(book.summary)}}</text>
+  </view>
+
+  <view class='sub-container'>
+    <text class='headline'>书本信息</text>
+    <view class='detail-container'>
+      <view class='vertical description'>
+        <text>出版社</text>
+        <text>出版年</text>
+        <text>页数</text>
+        <text>定价</text>
+        <text>装帧</text>
+      </view>
+      <view class='vertical'>
+        <text>{{book.publisher}}</text>
+        <text>{{book.pubdate}}</text>
+        <text>{{book.pages}}</text>
+        <text>{{book.price}}</text>
+        <text>{{book.binding}}</text>        
+      </view>
+    </view>
   </view>
 </view>
 
