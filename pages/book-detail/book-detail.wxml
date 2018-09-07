@@ -70,6 +70,9 @@
   <input class='post' placeholder='短评最多12个字' />
 </view>
 
+<!-- 底部黑色遮罩 -->
+<z-mask wx:if="{{posting}}"/>
+
 <!-- tag标签的高亮 -->
 <wxs module="tool">
   var highlight = function(index) {
