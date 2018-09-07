@@ -1,29 +1,29 @@
 <!-- 引入wxs -->
 <wxs src="../../util/filter.wxs" module='filter' />
-
+<!-- 头部 -->
 <view class='container'>
   <view class='head'>
     <image src='{{book.image}}' />
     <text class='title'>{{book.title}}</text>
     <text class='author'>{{book.author}}</text>
   </view>
-
+  <!-- 短评 -->
   <view class='sub-container'>
     <text class='headline'>短评</text>
     <view class='comment-container'>
       <block wx:for="{{filter.limit(comments,15)}}" wx:key="index">
-        <z-tag tag-class="{{index==0?'ex-tag1':''||index==1?'ex-tag2':''}}" text="{{item.content}}">
+        <z-tag tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
           <text class='num' slot="after">{{' +'+item.nums}}</text>
         </z-tag>
       </block>
     </view>
   </view>
-
+  <!-- 内容简介 -->
   <view class='sub-container'>
     <text class='headline'>内容简介</text>
     <text class='content' decode='{{true}}'>{{filter.format(book.summary)}}</text>
   </view>
-
+  <!-- 书本信息 -->
   <view class='sub-container'>
     <text class='headline'>书本信息</text>
     <view class='detail-container'>
@@ -44,15 +44,47 @@
     </view>
   </view>
 </view>
-
-<view class='post-container'>
-  <view class='post-fake'>
+<!-- 底部输入栏 -->
+<view class='post-container' wx:if="{{!posting}}">
+  <view bind:tap="onFakePost" class='post-fake'>
     <text>输入短评</text>
   </view>
   <view class='like-container'>
-    <z-like bind:like="onLike" class="like" like="{{listStatus}}" count="{{likeCount}}"/>
+    <z-like bind:like="onLike" class="like" like="{{listStatus}}" count="{{likeCount}}" />
   </view>
 </view>
+<!-- 真正的输入框 -->
+
+<view class='posting-container' wx:if="{{posting}}">
+  <view class='post-header'>
+    <text>仅可点击标签+1</text>
+    <text bind:tap="onCancel" class='cancel'>取消</text>
+  </view>
+  <view class='comment-container'>
+    <block wx:for="{{filter.limit(comments,3)}}" wx:key="index">
+      <z-tag tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
+        <text class='num' slot="after">{{' +'+item.nums}}</text>
+      </z-tag>
+    </block>
+  </view>
+  <input class='post' placeholder='短评最多12个字' />
+</view>
+
+<!-- tag标签的高亮 -->
+<wxs module="tool">
+  var highlight = function(index) {
+    if (index == 0) {
+      return 'ex-tag1'
+    }
+    if (index == 1) {
+      return 'ex-tag2'
+    }
+    return ''
+  }
+  module.exports = {
+    highlight: highlight
+  }
+</wxs>
 
 <!-- wxs也可以直接在wxml中定义
 <wxs module="filter">

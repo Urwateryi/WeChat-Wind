@@ -14,7 +14,8 @@ Page({
     comments:[],
     book:null,
     listStatus:false,
-    likeCount:0
+    likeCount:0,
+    posting:false//用户是否打开了输入框
   },
 
   onLoad: function(options) {
@@ -47,5 +48,17 @@ Page({
   onLike(event){
     const list_or_cancel = event.detail.behavior
     likeModel.like(list_or_cancel, this.data.book.id, 400);
+  },
+
+  onFakePost(event){
+    this.setData({
+      posting:true
+    })
+  },
+
+  onCancel(event){
+    this.setData({
+      posting: false
+    })
   }
 })
