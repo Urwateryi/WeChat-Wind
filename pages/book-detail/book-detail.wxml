@@ -11,7 +11,7 @@
   <view class='sub-container'>
     <text class='headline'>短评</text>
     <view class='comment-container'>
-      <block wx:for="{{filter.limit(comments,15)}}" wx:key="index">
+      <block wx:for="{{filter.limit(comments,10)}}" wx:key="index">
         <z-tag tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
           <text class='num' slot="after">{{' +'+item.nums}}</text>
         </z-tag>
@@ -62,12 +62,12 @@
   </view>
   <view class='comment-container'>
     <block wx:for="{{filter.limit(comments,3)}}" wx:key="index">
-      <z-tag tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
+      <z-tag bind:tapping="onPost" tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
         <text class='num' slot="after">{{' +'+item.nums}}</text>
       </z-tag>
     </block>
   </view>
-  <input class='post' placeholder='短评最多12个字' />
+  <input bindconfirm='onPost' class='post' placeholder='短评最多12个字' />
 </view>
 
 <!-- 底部黑色遮罩 -->

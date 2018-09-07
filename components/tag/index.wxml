@@ -1,5 +1,5 @@
 <!-- 这里container代表的叫普通样式，而tag-class代表的为外部样式，外部样式要放在普通样式之后，这样可以在外部对原有的样式做一定的覆盖（会覆盖这个真的是一厢情愿，小程序好像并没有做这样的处理，尴尬，所以括号外的上一句话请忽略，小程序实际的做法是，如果你要传入外部样式，那你原来的样式就不要要了，只能选择一个），补充 -->
-<view class='container tag-class'>
+<view bind:tap="onTap" class='container tag-class'>
   <slot name="before" />
   <text>{{text}}</text>
   <slot name="after" />
