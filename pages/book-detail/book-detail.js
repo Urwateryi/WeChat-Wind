@@ -1,8 +1,12 @@
 import {
   BookModel
 } from '../../models/book.js'
+import{
+  LikeModel
+}from '../../models/like.js'
 
 const bookModel = new BookModel()
+const likeModel = new LikeModel()
 
 Page({
 
@@ -39,4 +43,9 @@ Page({
       })
     })
   },
+
+  onLike(event){
+    const list_or_cancel = event.detail.behavior
+    likeModel.like(list_or_cancel, this.data.book.id, 400);
+  }
 })

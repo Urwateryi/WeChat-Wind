@@ -39,9 +39,18 @@
         <text>{{book.pubdate}}</text>
         <text>{{book.pages}}</text>
         <text>{{book.price}}</text>
-        <text>{{book.binding}}</text>        
+        <text>{{book.binding}}</text>
       </view>
     </view>
+  </view>
+</view>
+
+<view class='post-container'>
+  <view class='post-fake'>
+    <text>输入短评</text>
+  </view>
+  <view class='like-container'>
+    <z-like bind:like="onLike" class="like" like="{{listStatus}}" count="{{likeCount}}"/>
   </view>
 </view>
 
