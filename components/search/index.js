@@ -1,3 +1,8 @@
+import {
+  KeywordModel
+} from '../../models/keywords.js'
+
+const keywordModel = new KeywordModel()
 
 Component({
   /**
@@ -18,8 +23,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onCancel(event){
+    onCancel(event) {
       this.triggerEvent('cancel')
+    },
+
+    onConfirm(event) {
+      const word = event.detail.value
+      keywordModel.addToHistory(word)
     }
   }
 })
