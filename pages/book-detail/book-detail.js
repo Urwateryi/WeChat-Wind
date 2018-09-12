@@ -15,34 +15,51 @@ Page({
     book: null,
     listStatus: false,
     likeCount: 0,
-    posting: false //用户是否打开了输入框
+    posting: false//用户是否打开了输入框
   },
 
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中...',
+    })
+
     const bid = options.bid
 
     const detail = bookModel.getDetail(bid)
     const comments = bookModel.getComments(bid)
     const likeStatus = bookModel.getLikeStatus(bid)
 
-    detail.then(res => {
-      this.setData({
-        book: res
+    Promise.all([detail, comments, likeStatus])
+      .then(res => {
+        //这里res返回的是一个数组，一一对应的是传进去的参数的结果
+        console.log(res)
+        this.setData({
+          book: res[0],
+          comments: res[1].comments,
+          listStatus: res[2].like_status,
+          likeCount: res[2].fav_nums
+        })
+        wx.hideLoading()
       })
-    })
 
-    comments.then(res => {
-      this.setData({
-        comments: res.comments
-      })
-    })
+    // detail.then(res => {
+    //   this.setData({
+    //     book: res
+    //   })
+    // })
 
-    likeStatus.then(res => {
-      this.setData({
-        listStatus: res.like_status,
-        likeCount: res.fav_nums
-      })
-    })
+    // comments.then(res => {
+    //   this.setData({
+    //     comments: res.comments
+    //   })
+    // })
+
+    // likeStatus.then(res => {
+    //   this.setData({
+    //     listStatus: res.like_status,
+    //     likeCount: res.fav_nums
+    //   })
+    // })
   },
 
   onLike(event) {
