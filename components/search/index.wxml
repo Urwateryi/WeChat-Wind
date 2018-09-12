@@ -4,7 +4,7 @@
     <view class='search-container'>
       <image class='icon' src='images/search.png' />
       <input bind:confirm='onConfirm' placeholder='书籍名' class='bar' auto-focus='true' placeholder-class='in-bar' />
-      <image class='cancel-img' src='images/cancel.png' />
+      <image bind:tap="onDelete" class='cancel-img' src='images/cancel.png' />
     </view>
     <view class='cancel' bind:tap="onCancel">取消</view>
   </view>
@@ -18,7 +18,7 @@
       </view>
       <view class='tags'>
         <block wx:for="{{historyWords}}" wx:key="index">
-            <z-tag text="{{item}}" />
+          <z-tag bind:tapping="onConfirm" text="{{item}}" />
         </block>
       </view>
     </view>
@@ -30,7 +30,7 @@
       </view>
       <view class='tags'>
         <block wx:for="{{hotKeyword}}" wx:key="index">
-            <z-tag text="{{item}}" />
+          <z-tag bind:tapping="onConfirm" text="{{item}}" />
         </block>
       </view>
     </view>
@@ -39,7 +39,7 @@
   <!-- 搜索结果 -->
   <view wx:if="{{searching}}" class='books-container'>
     <block wx:for="{{dataArray}}" wx:key="item.id">
-        <z-book class="book" text="{{item}}" />
+      <z-book class="book" text="{{item}}" />
     </block>
   </view>
 

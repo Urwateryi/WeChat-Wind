@@ -63,7 +63,7 @@ Component({
       })
 
       //执行搜索
-      const q = event.detail.value
+      const q = event.detail.text || event.detail.value//前者为点击tag获取到的内容，后者为在input组件内部获取到的内容
       bookModel.search(0, q)
         .then(res => {
           this.setData({
@@ -73,5 +73,13 @@ Component({
           keywordModel.addToHistory(q)
         })
     },
+
+    //删除文本框中的内容
+    onDelete(event){
+      //关闭搜索结果页
+      this.setData({
+        searching: false
+      })
+    }
   }
 })
