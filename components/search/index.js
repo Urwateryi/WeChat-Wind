@@ -16,7 +16,14 @@ Component({
    * 组件的初始数据
    */
   data: {
+    historyWords:[]
+  },
 
+  attached(){
+    const historyWords = keywordModel.getHistory()
+    this.setData({
+      historyWords
+    })
   },
 
   /**
@@ -30,6 +37,8 @@ Component({
     onConfirm(event) {
       const word = event.detail.value
       keywordModel.addToHistory(word)
-    }
+    },
+
+
   }
 })

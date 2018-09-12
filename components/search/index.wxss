@@ -37,7 +37,7 @@
   /* margin-left: */
 }
 
-.books-container book-cmp {
+.books-container z-book {
   margin-bottom: 25rpx;
 }
 
@@ -115,7 +115,7 @@
   width: 630rpx;
 }
 
-.tags tag-cmp {
+.tags z-tag {
   margin-right: 10px;
   margin-bottom: 10px;
   /* padding-bottom: 10px; *//* margin-right:6px; */
