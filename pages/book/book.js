@@ -7,7 +7,8 @@ const bookModel = new BookModel()
 Page({
 
   data: {
-    books: []
+    books: [],
+    searching: false
   },
 
   onLoad(options) {
@@ -18,4 +19,16 @@ Page({
         })
       })
   },
+
+  onSearching(event) {
+    this.setData({
+      searching: true
+    })
+  },
+
+  onCancel(event) {
+    this.setData({
+      searching: false
+    })
+  }
 })

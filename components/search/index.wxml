@@ -1,0 +1,10 @@
+<view class='container'>
+  <view class='header'>
+    <view class='search-container'>
+      <image class='icon' src='images/search.png' />
+      <input placeholder='书籍名称' class='bar' auto-focus='true' placeholder-class='in-bar' />
+      <image class='cancel-img' src='images/cancel.png' />
+    </view>
+    <view class='cancel' bind:tap="onCancel">取消</view>
+  </view>
+</view>
