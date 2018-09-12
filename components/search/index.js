@@ -16,13 +16,21 @@ Component({
    * 组件的初始数据
    */
   data: {
-    historyWords:[]
+    historyWords: [],
+    hotKeyword: []
   },
 
-  attached(){
-    const historyWords = keywordModel.getHistory()
+  attached() {
+    //获取历史搜索词
     this.setData({
-      historyWords
+      historyWords: keywordModel.getHistory()
+    })
+
+    //获取热门搜索词
+    keywordModel.getHot().then(res => {
+      this.setData({
+        hotKeyword: res.hot
+      })
     })
   },
 
@@ -38,7 +46,5 @@ Component({
       const word = event.detail.value
       keywordModel.addToHistory(word)
     },
-
-
   }
 })
