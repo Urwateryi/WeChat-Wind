@@ -10,7 +10,7 @@
   </view>
 
   <!-- 标签 -->
-  <view>
+  <view wx:if="{{!searching}}">
     <view class='history'>
       <view class='title'>
         <view class='chunk' />
@@ -18,7 +18,7 @@
       </view>
       <view class='tags'>
         <block wx:for="{{historyWords}}" wx:key="index">
-          <z-tag text="{{item}}" />
+            <z-tag text="{{item}}" />
         </block>
       </view>
     </view>
@@ -30,9 +30,17 @@
       </view>
       <view class='tags'>
         <block wx:for="{{hotKeyword}}" wx:key="index">
-          <z-tag text="{{item}}" />
+            <z-tag text="{{item}}" />
         </block>
       </view>
     </view>
   </view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{searching}}" class='books-container'>
+    <block wx:for="{{dataArray}}" wx:key="item.id">
+        <z-book class="book" text="{{item}}" />
+    </block>
+  </view>
+
 </view>

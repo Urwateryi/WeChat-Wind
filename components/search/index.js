@@ -1,8 +1,12 @@
 import {
   KeywordModel
 } from '../../models/keywords.js'
+import {
+  BookModel
+} from '../../models/book.js'
 
 const keywordModel = new KeywordModel()
+const bookModel = new BookModel()
 
 Component({
   /**
@@ -16,8 +20,14 @@ Component({
    * 组件的初始数据
    */
   data: {
+    //历史搜索
     historyWords: [],
-    hotKeyword: []
+    //热门搜索
+    hotKeyword: [],
+    //搜索结果
+    dataArray: [],
+    //控制标签页和搜索结果页的显示与隐藏
+    searching: false
   },
 
   attached() {
@@ -40,11 +50,28 @@ Component({
   methods: {
     onCancel(event) {
       this.triggerEvent('cancel')
+      //关闭搜索结果页
+      this.setData({
+        searching: false
+      })
     },
 
     onConfirm(event) {
-      const word = event.detail.value
-      keywordModel.addToHistory(word)
+      //显示搜索结果页
+      this.setData({
+        searching: true
+      })
+
+      //执行搜索
+      const q = event.detail.value
+      bookModel.search(0, q)
+        .then(res => {
+          this.setData({
+            dataArray: res.books,
+          })
+          //搜索的记录，添加到缓存中
+          keywordModel.addToHistory(q)
+        })
     },
   }
 })

@@ -8,6 +8,7 @@ Page({
 
   data: {
     books: [],
+    //控制书籍页和搜索标签页的显示与隐藏
     searching: false
   },
 

@@ -13,6 +13,10 @@ Component({
 
   },
 
+  // attached(){
+  //   console.log(this.properties.book)
+  // },
+
   /**
    * 组件的方法列表
    */

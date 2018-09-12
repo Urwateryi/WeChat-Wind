@@ -9,12 +9,12 @@
     <image class='head-img' src='/images/book/quality.png' />
 
     <view class='books-container'>
-    <!-- 如果列表本身就是数字或者字符串，那么key可以直接写成wx:key="*this" -->
+      <!-- 如果列表本身就是数字或者字符串，那么key可以直接写成wx:key="*this" -->
       <block wx:for="{{books}}" wx:key="index">
-        <z-book book="{{item}}"/>
+          <z-book book="{{item}}" />
       </block>
     </view>
   </view>
 </view>
 
-<z-search wx:if="{{searching}}" bind:cancel="onCancel"/>
+<z-search wx:if="{{searching}}" bind:cancel="onCancel" />
