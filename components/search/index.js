@@ -74,6 +74,9 @@ Component({
           .then(res => {
             this.setMoreData(res.books)
             this._unLocked()
+          },()=>{
+            //失败，比如断网的时候，也需要解锁
+            this._unLocked()
           })
       }
     },
