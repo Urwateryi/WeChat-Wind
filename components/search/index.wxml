@@ -43,4 +43,9 @@
     </block>
   </view>
 
+  <!-- 正中间的loading -->
+  <z-loading class="loading-center" wx:if="{{loadingCenter}}" />
+  <!-- 底部加载更多的loading -->
+  <z-loading class="loading" wx:if="{{loading}}" />
+
 </view>

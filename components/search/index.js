@@ -38,7 +38,8 @@ Component({
     //控制标签页和搜索结果页的显示与隐藏
     searching: false,
     q: '', //输入框中的内容
-    loading: false //是否正在发送请求
+    loading: false, //是否正在发送请求
+    loadingCenter: false
   },
 
   attached() {
@@ -74,7 +75,7 @@ Component({
           .then(res => {
             this.setMoreData(res.books)
             this._unLocked()
-          },()=>{
+          }, () => {
             //失败，比如断网的时候，也需要解锁
             this._unLocked()
           })
@@ -84,6 +85,7 @@ Component({
     //执行搜索
     onConfirm(event) {
       this._showResult()
+      this._showLoadingCenter()
       //清空之前的数据
       this.initalize()
       //前者为点击tag获取到的内容，后者为在input组件内部获取到的内容
@@ -98,6 +100,7 @@ Component({
           })
           //搜索的记录，添加到缓存中
           keywordModel.addToHistory(q)
+          this._hideLoadingCenter()
         })
     },
 
@@ -120,12 +123,16 @@ Component({
     //加锁
     _locked() {
       //如果wxml中，绑定的有data中的变量的话，改变这个值必须要使用setData来进行，如果没有绑定的话，则可以直接使用=来赋值
-      this.data.loading = true
+      this.setData({
+        loading:true
+      })
     },
 
     //解锁
     _unLocked() {
-      this.data.loading = false
+      this.setData({
+        loading: false
+      })
     },
 
     //显示搜索结果页
@@ -139,6 +146,20 @@ Component({
     _closeResult() {
       this.setData({
         searching: false
+      })
+    },
+
+    //显示加载圈
+    _showLoadingCenter() {
+      this.setData({
+        loadingCenter: true
+      })
+    },
+
+    //隐藏加载圈
+    _hideLoadingCenter() {
+      this.setData({
+        loadingCenter: false
       })
     }
   }

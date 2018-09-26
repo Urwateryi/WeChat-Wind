@@ -35,9 +35,9 @@ const paginationBev = Behavior({
     //清空数据，初始化数据
     initalize() {
       this.setData({
-        dataArray: [],
-        total:null
+        dataArray: []
       })
+      this.data.total = null
     }
   }
 })
