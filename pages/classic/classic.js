@@ -5,68 +5,90 @@ import {
   LikeModel
 } from '../../models/like.js'
 
-let classicModel = new ClassicModel();
-let likeModel = new LikeModel();
+const classicModel = new ClassicModel()
+const likeModel = new LikeModel()
 
-Page({
+Component({
+
+  /**
+   * 页面的初始数据
+   */
+
+  properties: {
+    cid: Number,
+    type: Number
+  },
 
   data: {
-    classicData: null,
+    classic: null,
     latest: true,
     first: false,
-    likeCount:0,
-    likeStatus:false
+    likeCount: 0,
+    likeStatus: false
   },
 
-  onLoad(options) {
-    classicModel.getLastest((res) => {
-      console.log(res)
-      this.setData({
-        // classicData是要传递到wxml中去，被wxml使用的变量，最好在data中初始化一下
-        classicData: res,
-        likeCount: res.fav_nums,
-        likeStatus: res.like_status
-      })
-    })
-  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
 
-  //点赞
-  onLike(event) {
-    const behavior = event.detail.behavior
-    likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type);
-  },
-
-  //上一条
-  onPrevious(event) {
-    this._updataClassic('previous')
-  },
-
-  //下一条
-  onNext(event) {
-    this._updataClassic('next')
-  },
-
-  _updataClassic(nextOrPrevious) {
-    const index=this.data.classicData.index
-
-    classicModel.getClassic(index, nextOrPrevious, (res) => {
-      console.log(res)
-
-      this._getLikeStatus(res.id,res.type)
-      this.setData({
-        classicData: res,
-        latest: classicModel.isLatest(res.index),
-        first: classicModel.isFirst(res.index)
-      })
-    })
-  },
-
-  _getLikeStatus(artID, category) {
-    likeModel.getClassicLikeStatus(artID, category, (res) => {
+  attached(options) {
+    const cid = this.properties.cid
+    const type = this.properties.type
+    if (!cid) {
+      classicModel.getLatest((res) => {
         this.setData({
-          likeCount:res.fav_nums,
-          likeStatus:res.like_status
+          classic: res,
+          likeCount: res.fav_nums,
+          likeStatus: res.like_status
         })
-    })
+      })
+    } else {
+      classicModel.getById(cid, type, res => {
+        this._getLikeStatus(res.id, res.type)
+        this.setData({
+          classic: res,
+          latest: classicModel.isLatest(res.index),
+          first: classicModel.isFirst(res.index)
+        })
+      })
+    }
+  },
+
+  methods: {
+    onLike(event) {
+      const behavior = event.detail.behavior
+      likeModel.like(behavior, this.data.classic.id,
+        this.data.classic.type)
+    },
+
+    onNext(event) {
+      this._updateClassic('next')
+    },
+
+    onPrevious(event) {
+      this._updateClassic('previous')
+    },
+
+    _updateClassic(nextOrPrevious) {
+      const index = this.data.classic.index
+      classicModel.getClassic(index, nextOrPrevious, (res) => {
+        this._getLikeStatus(res.id, res.type)
+        this.setData({
+          classic: res,
+          latest: classicModel.isLatest(res.index),
+          first: classicModel.isFirst(res.index)
+        })
+      })
+    },
+
+    _getLikeStatus(artID, category) {
+      likeModel.getClassicLikeStatus(artID, category,
+        (res) => {
+          this.setData({
+            likeCount: res.fav_nums,
+            likeStatus: res.like_status
+          })
+        })
+    },
   }
 })

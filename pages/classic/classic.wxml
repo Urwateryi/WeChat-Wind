@@ -1,11 +1,15 @@
-<view class ="container">
-  <view class='header'>
-    <z-episode class="episode" index="{{classicData.index}}" />
-    <z-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
-  </view>
-  <z-movie hidden="{{classicData.type!=100}}" img="{{classicData.image}}" content="{{classicData.content}}" />
-  <!-- 为了让组件执行detached和attached，需要用wx:if来执行显示与隐藏 -->
-  <z-music wx:if="{{classicData.type==200}}" img="{{classicData.image}}" src="{{classicData.url}}" content="{{classicData.content}}" />
-  <z-essay hidden="{{classicData.type!=300}}" img="{{classicData.image}}" content="{{classicData.content}}" />
-  <z-navi bind:left="onNext" bind:right="onPrevious" title="{{classicData.title}}" first="{{first}}" latest="{{latest}}" class="navi" />
+<view class="container">
+    <view class="header">
+        <z-episode class="episode" index="{{classic.index}}" />
+        <view class="like-container">
+            <z-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+            <z-button class="share-btn" open-type="share">
+                <image class="share" slot="img" src="/images/icon/share.png" />
+            </z-button>
+        </view>
+    </view>
+    <z-movie hidden="{{classic.type!=100}}" img="{{classic.image}}" content="{{classic.content}}" />
+    <z-music wx:if="{{classic.type==200}}" img="{{classic.image}}" content="{{classic.content}}" title="{{classic.title}}" src="{{classic.url}}" />
+    <z-essay hidden="{{classic.type!=300}}" img="{{classic.image}}" content="{{classic.content}}" />
+    <z-navi bind:left="onNext" bind:right="onPrevious" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" class="navi" />
 </view>

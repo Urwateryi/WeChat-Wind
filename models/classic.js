@@ -3,15 +3,15 @@ import {
 } from '../util/http.js'
 
 class ClassicModel extends HTTP {
-  getLastest(sCallback) {
+
+  getLatest(sCallback) {
     this.request({
       url: 'classic/latest',
       success: (res) => {
         sCallback(res)
         this._setLatestIndex(res.index)
-
-        //写入缓存
-        let key=this._getKey(res.index)
+        // 写入缓存
+        let key = this._getKey(res.index)
         wx.setStorageSync(key, res)
       }
     })
@@ -44,6 +44,22 @@ class ClassicModel extends HTTP {
   isLatest(index) {
     let latestIndex=this._getLatestIndex()
     return latestIndex==index?true:false
+  }
+
+  getMyFavor(success) {
+    const params = {
+      url: 'classic/favor',
+      success: success
+    }
+    this.request(params)
+  }
+
+  getById(cid, type, success) {
+    let params = {
+      url: `classic/${type}/${cid}`,
+      success: success
+    }
+    this.request(params)
   }
 
   //将最新一期的index缓存到小程序中
