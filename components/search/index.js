@@ -27,7 +27,8 @@ Component({
     //搜索结果
     dataArray: [],
     //控制标签页和搜索结果页的显示与隐藏
-    searching: false
+    searching: false,
+    q:''//输入框中的内容
   },
 
   attached() {
@@ -68,6 +69,7 @@ Component({
         .then(res => {
           this.setData({
             dataArray: res.books,
+            q//搜索成功后，将搜索的内容赋值到输入框中，特别是点击标签搜索功能
           })
           //搜索的记录，添加到缓存中
           keywordModel.addToHistory(q)

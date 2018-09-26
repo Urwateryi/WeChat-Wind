@@ -3,7 +3,7 @@
   <view class='header'>
     <view class='search-container'>
       <image class='icon' src='images/search.png' />
-      <input bind:confirm='onConfirm' placeholder='书籍名' class='bar' auto-focus='true' placeholder-class='in-bar' />
+      <input value='{{q}}' bind:confirm='onConfirm' placeholder='书籍名' class='bar' auto-focus='true' placeholder-class='in-bar' />
       <image bind:tap="onDelete" class='cancel-img' src='images/cancel.png' />
     </view>
     <view class='cancel' bind:tap="onCancel">取消</view>
@@ -37,9 +37,9 @@
   </view>
 
   <!-- 搜索结果 -->
-  <view wx:if="{{searching}}" class='books-container'>
-    <block wx:for="{{dataArray}}" wx:key="item.id">
-      <z-book class="book" text="{{item}}" />
+  <view wx:if="{{searching}}" class="books-container">
+    <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
+      <z-book book="{{item}}" class="book" />
     </block>
   </view>
 
