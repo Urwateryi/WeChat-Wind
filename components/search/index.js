@@ -5,17 +5,15 @@ import {
   BookModel
 } from '../../models/book.js'
 
-import{
+import {
   paginationBev
-}from '../behaviors/paginations.js'
+} from '../behaviors/paginations.js'
 
 const keywordModel = new KeywordModel()
 const bookModel = new BookModel()
 
 Component({
-
-
-  behaviors:[
+  behaviors: [
     paginationBev
   ],
   /**
@@ -24,7 +22,8 @@ Component({
   properties: {
     more: {
       type: String,
-      observer: '_loadMore' //当该值发生变化的时候，才会触发该事件，所以more使用随机数，使每次的值不一样
+      //当该值发生变化的时候，才会触发该事件，所以more使用随机数，使每次的值不一样
+      observer: 'loadMore'
     }
   },
 
@@ -61,43 +60,32 @@ Component({
    */
   methods: {
     //加载更多
-    _loadMore() {
+    loadMore() {
       if (!this.data.q) {
         return
       }
       //相当于加了一个锁，如果正在加载，那么就不要再去请求数据了
-      if (this.data.loading) {
+      if (this._isLocked()) {
         return
       }
-      if(this.hasMore()){
-        //如果wxml中，绑定的有data中的变量的话，改变这个值必须要使用setData来进行，如果没有绑定的话，则可以直接使用=来赋值
-        this.data.loading = true
+      if (this.hasMore()) {
+        this._locked()
         bookModel.search(this.getCurrentStart(), this.data.q)
           .then(res => {
             this.setMoreData(res.books)
-            this.data.loading = false
+            this._unLocked()
           })
       }
     },
 
-    onCancel(event) {
-      this.triggerEvent('cancel')
-      //关闭搜索结果页
-      this.setData({
-        searching: false
-      })
-    },
-
+    //执行搜索
     onConfirm(event) {
-      //显示搜索结果页
-      this.setData({
-        searching: true
-      })
-
-      //执行搜索
-      const q = event.detail.text || event.detail.value //前者为点击tag获取到的内容，后者为在input组件内部获取到的内容
+      this._showResult()
       //清空之前的数据
       this.initalize()
+      //前者为点击tag获取到的内容，后者为在input组件内部获取到的内容
+      const q = event.detail.text || event.detail.value
+
       bookModel.search(0, q)
         .then(res => {
           this.setMoreData(res.books)
@@ -110,9 +98,42 @@ Component({
         })
     },
 
+    //关闭搜索结果页
+    onCancel(event) {
+      this.triggerEvent('cancel')
+      this._closeResult()
+    },
+
     //删除文本框中的内容
     onDelete(event) {
-      //关闭搜索结果页
+      this._closeResult()
+    },
+
+    //是否锁住了
+    _isLocked() {
+      return this.data.loading ? true : false
+    },
+
+    //加锁
+    _locked() {
+      //如果wxml中，绑定的有data中的变量的话，改变这个值必须要使用setData来进行，如果没有绑定的话，则可以直接使用=来赋值
+      this.data.loading = true
+    },
+
+    //解锁
+    _unLocked() {
+      this.data.loading = false
+    },
+
+    //显示搜索结果页
+    _showResult() {
+      this.setData({
+        searching: true
+      })
+    },
+
+    //关闭搜索结果页
+    _closeResult() {
       this.setData({
         searching: false
       })
