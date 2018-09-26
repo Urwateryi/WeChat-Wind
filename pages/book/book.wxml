@@ -17,4 +17,4 @@
   </view>
 </view>
 
-<z-search wx:if="{{searching}}" bind:cancel="onCancel" />
+<z-search more="{{more}}" wx:if="{{searching}}" bind:cancel="onCancel" />

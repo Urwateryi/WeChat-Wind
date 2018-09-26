@@ -2,6 +2,10 @@ import {
   BookModel
 } from '../../models/book.js'
 
+import{
+  random
+} from '../../util/common.js'
+
 const bookModel = new BookModel()
 
 Page({
@@ -9,7 +13,8 @@ Page({
   data: {
     books: [],
     //控制书籍页和搜索标签页的显示与隐藏
-    searching: false
+    searching: false,
+    more: '' //默认情况下不需要加载更多
   },
 
   onLoad(options) {
@@ -30,6 +35,12 @@ Page({
   onCancel(event) {
     this.setData({
       searching: false
+    })
+  },
+
+  onReachBottom() {
+    this.setData({
+      more: random(32)
     })
   }
 })
