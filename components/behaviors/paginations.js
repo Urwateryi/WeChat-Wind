@@ -4,7 +4,8 @@ const paginationBev = Behavior({
     dataArray: [],
     total: null,
     //是否返回结果为空
-    noneResult:false
+    noneResult:false,
+    loading:false
   },
 
   methods: {
@@ -43,10 +44,32 @@ const paginationBev = Behavior({
     initalize() {
       this.setData({
         dataArray: [],
-        noneResult: false
+        noneResult: false,
+        loading: false
       })
       this.data.total = null
-    }
+    },
+
+
+    //是否锁住了
+    isLocked() {
+      return this.data.loading ? true : false
+    },
+
+    //加锁
+    locked() {
+      //如果wxml中，绑定的有data中的变量的话，改变这个值必须要使用setData来进行，如果没有绑定的话，则可以直接使用=来赋值
+      this.setData({
+        loading: true
+      })
+    },
+
+    //解锁
+    unLocked() {
+      this.setData({
+        loading: false
+      })
+    },
   }
 })
 

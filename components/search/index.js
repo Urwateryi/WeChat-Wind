@@ -66,18 +66,18 @@ Component({
         return
       }
       //相当于加了一个锁，如果正在加载，那么就不要再去请求数据了
-      if (this._isLocked()) {
+      if (this.isLocked()) {
         return
       }
       if (this.hasMore()) {
-        this._locked()
+        this.locked()
         bookModel.search(this.getCurrentStart(), this.data.q)
           .then(res => {
             this.setMoreData(res.books)
-            this._unLocked()
+            this.unLocked()
           }, () => {
             //失败，比如断网的时候，也需要解锁
-            this._unLocked()
+            this.unLocked()
           })
       }
     },
@@ -114,26 +114,6 @@ Component({
       //清空之前的数据
       this.initalize()
       this._closeResult()
-    },
-
-    //是否锁住了
-    _isLocked() {
-      return this.data.loading ? true : false
-    },
-
-    //加锁
-    _locked() {
-      //如果wxml中，绑定的有data中的变量的话，改变这个值必须要使用setData来进行，如果没有绑定的话，则可以直接使用=来赋值
-      this.setData({
-        loading: true
-      })
-    },
-
-    //解锁
-    _unLocked() {
-      this.setData({
-        loading: false
-      })
     },
 
     //显示搜索结果页
