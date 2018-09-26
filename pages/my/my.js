@@ -100,12 +100,6 @@ Page({
     })
   },
 
-  onStudy(event) {
-    wx.navigateTo({
-      url: '/pages/course/course',
-    })
-  },
-
   onJumpToDetail(event) {
     const cid = event.detail.cid
     const type = event.detail.type

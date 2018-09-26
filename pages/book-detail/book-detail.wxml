@@ -12,9 +12,9 @@
     <text class='headline'>短评</text>
     <view class='comment-container'>
       <block wx:for="{{filter.limit(comments,10)}}" wx:key="index">
-          <z-tag tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
-            <text class='num' slot="after">{{' +'+item.nums}}</text>
-          </z-tag>
+        <z-tag tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
+          <text class='num' slot="after">{{' +'+item.nums}}</text>
+        </z-tag>
       </block>
     </view>
   </view>
@@ -49,9 +49,15 @@
   <view bind:tap="onFakePost" class='post-fake'>
     <text>输入短评</text>
   </view>
+
   <view class='like-container'>
+     <z-button class="share-btn" open-type="share">
+      <image class="share" slot="img" src="/images/icon/share.png" />
+    </z-button>
     <z-like bind:like="onLike" class="like" like="{{listStatus}}" count="{{likeCount}}" />
+ 
   </view>
+
 </view>
 <!-- 真正的输入框 -->
 
@@ -62,9 +68,9 @@
   </view>
   <view class='comment-container'>
     <block wx:for="{{filter.limit(comments,3)}}" wx:key="index">
-        <z-tag bind:tapping="onPost" tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
-          <text class='num' slot="after">{{' +'+item.nums}}</text>
-        </z-tag>
+      <z-tag bind:tapping="onPost" tag-class="{{tool.highlight(index)}}" text="{{item.content}}">
+        <text class='num' slot="after">{{' +'+item.nums}}</text>
+      </z-tag>
     </block>
   </view>
   <input bindconfirm='onPost' class='post' placeholder='短评最多12个字' />

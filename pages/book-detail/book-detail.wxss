@@ -114,7 +114,7 @@
   height: 100rpx;
   box-shadow: 1px -1px 1px #e3e3e3;
   position: fixed;
-  width: 690rpx;
+  width:100%;
   background-color: #fff;
   bottom: 0;
   display: flex;
@@ -129,7 +129,7 @@
   flex-direction: row;
   align-items: center;
   height: 60rpx;
-  width: 460rpx;
+  width: 500rpx;
   border: 1px solid #999;
   border-radius: 15px;
   font-size: 22rpx;
@@ -137,7 +137,8 @@
 }
 
 .like {
-  margin-right: 30rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
   margin-top: 10rpx;
 }
 
@@ -205,4 +206,14 @@
   background-color: #f5f5f5;
   border-radius: 15px;
   padding-left: 25rpx;
+}
+
+.share-btn {
+    margin-top: 28rpx;
+    margin-left: 10rpx;
+}
+
+.share {
+    width: 40rpx;
+    height: 40rpx;
 }
