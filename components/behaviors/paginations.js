@@ -2,7 +2,9 @@
 const paginationBev = Behavior({
   data: {
     dataArray: [],
-    total: null
+    total: null,
+    //是否返回结果为空
+    noneResult:false
   },
 
   methods: {
@@ -17,6 +19,11 @@ const paginationBev = Behavior({
     //设置数据总数
     setTotal(total) {
       this.data.total = total
+      if(total==0){
+        this.setData({
+          noneResult:true
+        })
+      }
     },
 
     //返回当前起始数
@@ -35,7 +42,8 @@ const paginationBev = Behavior({
     //清空数据，初始化数据
     initalize() {
       this.setData({
-        dataArray: []
+        dataArray: [],
+        noneResult: false
       })
       this.data.total = null
     }

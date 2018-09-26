@@ -39,7 +39,7 @@
   <!-- 搜索结果 -->
   <view wx:if="{{searching}}" class="books-container">
     <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
-      <z-book book="{{item}}" class="book" />
+      <z-book showLike="{{false}}" book="{{item}}" class="book" />
     </block>
   </view>
 
@@ -47,5 +47,7 @@
   <z-loading class="loading-center" wx:if="{{loadingCenter}}" />
   <!-- 底部加载更多的loading -->
   <z-loading class="loading" wx:if="{{loading}}" />
+
+  <text wx:if="{{noneResult}}" class='empty-tip'>没有搜索到书籍</text>
 
 </view>

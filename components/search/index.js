@@ -86,18 +86,16 @@ Component({
     onConfirm(event) {
       this._showResult()
       this._showLoadingCenter()
-      //清空之前的数据
-      this.initalize()
       //前者为点击tag获取到的内容，后者为在input组件内部获取到的内容
       const q = event.detail.text || event.detail.value
-
+      this.setData({
+        q //搜索成功后，将搜索的内容赋值到输入框中，特别是点击标签搜索功能
+      })
       bookModel.search(0, q)
         .then(res => {
           this.setMoreData(res.books)
           this.setTotal(res.total)
-          this.setData({
-            q //搜索成功后，将搜索的内容赋值到输入框中，特别是点击标签搜索功能
-          })
+
           //搜索的记录，添加到缓存中
           keywordModel.addToHistory(q)
           this._hideLoadingCenter()
@@ -106,12 +104,15 @@ Component({
 
     //关闭搜索结果页
     onCancel(event) {
-      this.triggerEvent('cancel')
-      this._closeResult()
+      //清空之前的数据
+      this.initalize()
+      this.triggerEvent('cancel', {}, {})
     },
 
     //删除文本框中的内容
     onDelete(event) {
+      //清空之前的数据
+      this.initalize()
       this._closeResult()
     },
 
@@ -124,7 +125,7 @@ Component({
     _locked() {
       //如果wxml中，绑定的有data中的变量的话，改变这个值必须要使用setData来进行，如果没有绑定的话，则可以直接使用=来赋值
       this.setData({
-        loading:true
+        loading: true
       })
     },
 
@@ -145,7 +146,8 @@ Component({
     //关闭搜索结果页
     _closeResult() {
       this.setData({
-        searching: false
+        searching: false,
+        q: ''
       })
     },
 
