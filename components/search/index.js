@@ -44,9 +44,7 @@ Component({
 
   attached() {
     //获取历史搜索词
-    this.setData({
-      historyWords: keywordModel.getHistory()
-    })
+    this._getHistoryWords()
 
     //获取热门搜索词
     keywordModel.getHot().then(res => {
@@ -111,6 +109,7 @@ Component({
 
     //删除文本框中的内容
     onDelete(event) {
+      this._getHistoryWords()
       //清空之前的数据
       this.initalize()
       this._closeResult()
@@ -128,6 +127,13 @@ Component({
       this.setData({
         searching: false,
         q: ''
+      })
+    },
+
+    //获取历史搜索记录
+    _getHistoryWords() {
+      this.setData({
+        historyWords: keywordModel.getHistory()
       })
     },
 
