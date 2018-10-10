@@ -10,7 +10,7 @@
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "小程序",
+    "navigationBarTitleText": "每月一句",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": false
@@ -34,7 +34,7 @@
       },
       {
         "pagePath": "pages/my/my",
-        "text": "书籍",
+        "text": "我的",
         "iconPath": "/images/tab/my.png",
         "selectedIconPath": "/images/tab/my@highlight.png"
       }
